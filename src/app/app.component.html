@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Hola mundo</h1>
+  <h1>CoinMarket</h1>
   <input 
   type="text" 
   class="form-control bg-dark text-light border-0 my-4 text-center rounder-0"
@@ -15,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let coin of coins; let i = index">
+      <tr *ngFor="let coin of filteredCoins; let i = index">
         <td class="text-muted">
           {{i + 1}}
         </td>
