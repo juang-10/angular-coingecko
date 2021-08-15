@@ -27,7 +27,16 @@ export class AppComponent implements OnInit {
     '24h Volume',
   ]
   
+  searchText = '';
+
   constructor(private http: HttpClient) {}
+
+  searchCoin() {
+    this.coins = this.coins.filter(coin => 
+      coin.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      coin.symbol.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
 
   ngOnInit() {
     this.http.get<Coin[]>(
