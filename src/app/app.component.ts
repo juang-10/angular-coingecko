@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 interface Coin {
@@ -16,9 +16,16 @@ interface Coin {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements onInit {
+export class AppComponent implements OnInit {
 
   coins: Coin[] = []
+  titles: string [] = [
+    '#',
+    'Coin',
+    'Price',
+    'Price Change',
+    '24h Volume',
+  ]
   
   constructor(private http: HttpClient) {}
 
