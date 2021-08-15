@@ -19,20 +19,18 @@ interface Coin {
 export class AppComponent implements OnInit {
 
   coins: Coin[] = []
-  titles: string [] = [
-    '#',
-    'Coin',
-    'Price',
-    'Price Change',
-    '24h Volume',
-  ]
+  
+  filteredCoins: Coin[] = []
+
+
+  titles: string [] = [ '#', 'Coin', 'Price', 'Price Change','24h Volume']
   
   searchText = '';
 
   constructor(private http: HttpClient) {}
 
   searchCoin() {
-    this.coins = this.coins.filter(coin => 
+    this.filteredCoins = this.coins.filter(coin => 
       coin.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
       coin.symbol.toLowerCase().includes(this.searchText.toLowerCase())
     );
@@ -45,7 +43,8 @@ export class AppComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
-          this.coins = res
+          this.coins = res;
+          this.filteredCoins = res;
         }, 
         (err) => console.log(err)
       );
