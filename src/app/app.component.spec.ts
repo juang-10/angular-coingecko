@@ -1,4 +1,6 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -7,6 +9,10 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports: [
+        HttpClientTestingModule,
+        FormsModule
+      ]
     }).compileComponents();
   });
 
@@ -16,16 +22,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-coingecko-api'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-coingecko-api');
-  });
-
-  it('should render title', () => {
+  it('should render header title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('angular-coingecko-api app is running!');
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h1')?.textContent).toContain('CoinMarket');
   });
 });
